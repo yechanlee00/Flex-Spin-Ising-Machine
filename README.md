@@ -6,7 +6,7 @@ The design is inspired by the paper:
 
 > **Flex-Spin: A CMOS Ising Machine With 256 Flexible Spin Processing Elements With 8-b Coefficients for Solving Combinatorial Optimization Problems**
 
-This code is not an official implementation of the paper.  
+Note that this code is not an official implementation of the paper.
 It is written for educational purposes to understand how a spin interaction term can be accumulated using simple digital logic.
 
 ---
@@ -17,8 +17,6 @@ It is written for educational purposes to understand how a spin interaction term
 |---|---|
 | `spin_operator.v` | DUT file containing the spin operator, full adder, and D flip-flop modules. |
 | `tb_spin_operator.v` | Testbench file that verifies the MAC-based spin accumulation operation. |
-| `build.sh` | Script for compiling and running the simulation using Vivado XSim. |
-| `clean.sh` | Script for removing generated simulation files. |
 
 ---
 
