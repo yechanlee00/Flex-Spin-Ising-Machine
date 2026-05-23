@@ -22,8 +22,11 @@ It is written for educational purposes to understand how a spin interaction term
 
 ## 2. Design Goal
 
-The goal of this design is to implement the local field accumulation used in an Ising machine.
-
+The goal of this design is to implement the local field accumulation used in an Ising machine.  
+It's over all structure looks like:  
+<p align="center">
+<img width="20%" alt="Image" src="https://github.com/user-attachments/assets/8f4402af-8bd3-4622-984f-77307d8bfe72" />
+</p>
 For a target spin $\sigma_i$, the local field is computed as:
 
 $$
@@ -337,7 +340,7 @@ $$
 cout = ab + cin(a \oplus b)
 $$
 
-The Verilog implementation is:
+The Verilog implementation is simple Full adder logic:
 
 ```verilog
 assign sum = a ^ b ^ cin;
@@ -434,7 +437,10 @@ $$
 | `J_S`    | South interaction coefficient. |
 | `J_W`    | West interaction coefficient.  |
 
-The testbench initializes these variables as:
+The testbench initializes these variables as paper's figure:  
+<p align="center">
+<img width="40%" alt="Image" src="https://github.com/user-attachments/assets/050f8b07-d6ff-4ada-8360-bdf05a59e782" />
+</p>
 
 ```verilog
 spin_N = 1'b1;
