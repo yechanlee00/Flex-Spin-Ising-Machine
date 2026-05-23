@@ -3,7 +3,7 @@
 ## Overview
 
 This project implements a hardware-based spin accumulation operator inspired by the local field calculation used in CMOS Ising Machines.  
-(To study Flex-Spin : A CMOS Ising Machine With 256 Flexible Spin Processing Elements With 8-b Coefficients for Solving Combinatorial Optimization Problems)
+(To study Flex-Spin : A CMOS Ising Machine With 256 Flexible Spin Processing Elements With 8-b Coefficients for Solving Combinatorial Optimization Problems)  
 The module performs signed accumulation of weighted neighboring spin values using:
 
 - XOR-based sign inversion
