@@ -17,8 +17,6 @@ It is written for educational purposes to understand how a spin interaction term
 | -------------------- | --------------------------------------------------------------------------- |
 | `spin_operator.v`    | DUT file containing the spin operator, full adder, and D flip-flop modules. |
 | `tb_spin_operator.v` | Testbench file that verifies the MAC-based spin accumulation operation.     |
-| `build.sh`           | Script for compiling and running the simulation using Vivado XSim.          |
-| `clean.sh`           | Script for removing generated simulation files.                             |
 
 ---
 
@@ -849,49 +847,7 @@ updated spin bit = 1
 
 ---
 
-## 12. Build and Run
-
-The following script can be used with Vivado XSim.
-
-### `build.sh`
-
-```bash
-#!/bin/bash
-
-xvlog spin_operator.v tb_spin_operator.v
-xelab tb_spin_operator -debug wave -s tb_spin_operator
-xsim tb_spin_operator -gui -wdb simulate_xsim_tb_spin_operator.wdb
-```
-
-To use the script:
-
-```bash
-chmod +x build.sh
-./build.sh
-```
-
----
-
-## 13. Clean Script
-
-### `clean.sh`
-
-```bash
-#!/bin/bash
-
-rm -rf *xe* *xs* *.wdb* *trace* *xv* *we*
-```
-
-To use the script:
-
-```bash
-chmod +x clean.sh
-./clean.sh
-```
-
----
-
-## 14. Notes
+## 12. Notes
 
 * This project is intended for simulation and educational understanding.
 * The DUT is synthesizable, but the testbench is not synthesizable.
