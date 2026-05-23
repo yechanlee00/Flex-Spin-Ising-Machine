@@ -1,4 +1,4 @@
-# FlexSpin Spin Operator Verilog Simulation
+# FlexSpin Spin Operator
 
 This repository contains a Verilog implementation and testbench for a simplified **spin operator** used in an Ising-machine-style processing element.
 
@@ -768,30 +768,12 @@ The exact simulation time may differ depending on the simulator formatting.
 
 ---
 
-## 9. Expected Final Result
+## 9. Simulation Result
+<p align="center">
+<img width="2112" height="748" alt="Image" src="https://github.com/user-attachments/assets/b35e1d80-41b4-4dfd-8b7f-00b92542f02f" />
+</p>
 
-The testbench is designed to produce:
-
-$$
-S = 8
-$$
-
-The final sign bit should be:
-
-$$
-MSB_sign = 0
-$$
-
-Therefore, the target spin should update to:
-
-$$
-\sigma_5 = +1
-$$
-
-In bit encoding:
-
-```text
-updated spin bit = 1
-```
+The testbench is designed to produce S = 8.
+Therefore, the target spin should update to up-spin, value +1
 
 ---
