@@ -20,22 +20,23 @@ It is written for educational purposes to understand how a spin interaction term
 
 ---
 
+```markdown
 ## 2. Design Goal
 
 The goal of this design is to implement the local field accumulation used in an Ising machine.
 
-For a target spin \(\sigma_i\), the local field is computed as:
+For a target spin $\sigma_i$, the local field is computed as:
 
-\[
+$$
 L_i = \sum_j J_{ij}\sigma_j
-\]
+$$
 
 where:
 
-- \(J_{ij}\) is the interaction coefficient between spin \(i\) and spin \(j\).
-- \(\sigma_j\) is the neighboring spin.
-- \(L_i\) is the accumulated local field.
-- The sign of \(L_i\) determines the next spin value.
+- $J_{ij}$ is the interaction coefficient between spin $i$ and spin $j$.
+- $\sigma_j$ is the neighboring spin.
+- $L_i$ is the accumulated local field.
+```
 
 The spin bit encoding used in this design is:
 
@@ -831,48 +832,6 @@ In bit encoding:
 
 ```text
 updated spin bit = 1
-```
-
----
-
-## 12. Build and Run
-
-The following script can be used with Vivado XSim.
-
-### `build.sh`
-
-```bash
-#!/bin/bash
-
-xvlog spin_operator.v tb_spin_operator.v
-xelab tb_spin_operator -debug wave -s tb_spin_operator
-xsim tb_spin_operator -gui -wdb simulate_xsim_tb_spin_operator.wdb
-```
-
-To use the script:
-
-```bash
-chmod +x build.sh
-./build.sh
-```
-
----
-
-## 13. Clean Script
-
-### `clean.sh`
-
-```bash
-#!/bin/bash
-
-rm -rf *xe* *xs* *.wdb* *trace* *xv* *we*
-```
-
-To use the script:
-
-```bash
-chmod +x clean.sh
-./clean.sh
 ```
 
 ---
