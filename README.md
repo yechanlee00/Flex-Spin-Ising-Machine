@@ -3,15 +3,15 @@
 ## Overview
 
 This project implements a hardware-based spin accumulation operator inspired by the local field calculation used in CMOS Ising Machines.
-
+(To study Flex-Spin : A CMOS Ising Machine With 256 Flexible Spin Processing Elements With 8-b Coefficients for Solving Combinatorial Optimization Problems)
 The module performs signed accumulation of weighted neighboring spin values using:
 
 - XOR-based sign inversion
-- Ripple Carry Adders (RCA)
+- Multiple Ripple Carry Adders (RCA)
 - Sequential accumulation register
 - Synchronous D Flip-Flops
 
-The testbench verifies the MAC (Multiply-Accumulate) behavior cycle-by-cycle using directional spin interactions.
+The testbench verifies the MAC behavior cycle-by-cycle using directional spin interactions.
 
 ---
 
