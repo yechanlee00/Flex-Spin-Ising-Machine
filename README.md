@@ -27,7 +27,7 @@ It's over all structure looks like:
 <p align="center">
 <img width="20%" alt="Image" src="https://github.com/user-attachments/assets/8f4402af-8bd3-4622-984f-77307d8bfe72" />
 </p>
-For a target spin $\sigma_i$, the local field is computed as:
+For a target spin, the local field is computed as:
 
 $$
 L_i = \sum_j J_{ij}\sigma_j
@@ -329,17 +329,6 @@ module full_adder(
     output wire cout
 );
 ```
-
-The logic equations are:
-
-$$
-sum = a \oplus b \oplus cin
-$$
-
-$$
-cout = ab + cin(a \oplus b)
-$$
-
 The Verilog implementation is simple Full adder logic:
 
 ```verilog
@@ -779,52 +768,7 @@ The exact simulation time may differ depending on the simulator formatting.
 
 ---
 
-## 9. Why `en` Is Required
-
-The `en` signal is required because the accumulator should update only when a valid MAC input is applied.
-
-If `en` remains high for multiple cycles with the same `J` and `spin`, the same interaction term will be accumulated repeatedly.
-
-For example, if:
-
-```verilog
-J = 8'sd2;
-spin = 1'b1;
-en = 1'b1;
-```
-
-and `en` stays high for several cycles, then:
-
-$$
-S = 0 \rightarrow 2 \rightarrow 4 \rightarrow 6 \rightarrow \cdots
-$$
-
-This is not the intended behavior.
-
-Therefore:
-
-* `en = 1` means one valid MAC operation is performed.
-* `en = 0` means the accumulator holds its current value.
-
----
-
-## 10. Why `acc_clear` Is Required
-
-The `acc_clear` signal is required to start each local field calculation from zero.
-
-Before calculating a new target spin's local field:
-
-$$
-S = 0
-$$
-
-must be guaranteed.
-
-Without `acc_clear`, the previous accumulated local field could remain in the accumulator and corrupt the next computation.
-
----
-
-## 11. Expected Final Result
+## 9. Expected Final Result
 
 The testbench is designed to produce:
 
@@ -851,14 +795,3 @@ updated spin bit = 1
 ```
 
 ---
-
-## 12. Notes
-
-* This project is intended for simulation and educational understanding.
-* The DUT is synthesizable, but the testbench is not synthesizable.
-* The design does not use a conventional multiplier.
-* Multiplication by the spin value is implemented using XOR and two's-complement arithmetic.
-* The accumulator width is 12 bits to support a wider local field range than the 8-bit coefficient input.
-* The sign bit `S[11]` is used to determine the next spin state.
-* The spin encoding is `1 = +1` and `0 = -1`.
-* The expected final test result is `S = 8`.
