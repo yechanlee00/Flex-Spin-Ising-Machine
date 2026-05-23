@@ -69,8 +69,7 @@ where:
 * `spin = 1` represents $+1$.
 * `spin = 0` represents $-1$.
 
-The design does not use a conventional multiplier.
-Instead, multiplication by $+1$ or $-1$ is implemented using XOR-based two's-complement sign conversion.
+The design use a XOR-based multiplier to calculate two's-complement sign conversion.
 
 ---
 
