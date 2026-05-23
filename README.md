@@ -454,7 +454,7 @@ J_W    = -8'sd5;
 
 ### 6.4 Clock Generation
 
-The testbench uses a 64 MHz clock.
+The testbench uses a 64 MHz clock as paper has performed.
 
 ```verilog
 localparam real CLK_PERIOD = 15.625;
