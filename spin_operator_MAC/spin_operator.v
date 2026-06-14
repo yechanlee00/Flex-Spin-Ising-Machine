@@ -2,10 +2,11 @@
 // Flex-Spin : A CMOS Ising Machine With 256 Flexible Spin Processing Elements With 8-b
 // Coefficients for Solving Combinatorial Optimization Problems
 // Yuqi Su , Member, IEEE, Tony Tae-Hyoung Kim , Senior Member, IEEE, and Bongjin Kim , Senior Member, IEEE
-// This is not a offcial code of paper!
-
-// Made by yechan LEE (논문 학습 및 이해를 위해 작성한 코드입니다.)
-// Last update : 2026-05-23
+//
+// This is not a offcial code of paper or author.
+//
+// Made by yechan LEE
+// Last update : 2026-06-14
 // No AI tool was used
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -13,7 +14,7 @@
 
 module spin_operator(
 	input wire clk,
-	input wire rst_n,		// d_ff reset
+	input wire rst_n,		    // d_ff reset
 	input wire acc_clear,		// accumulation reset
 	input wire en,
 	input wire [7:0] J,
@@ -30,10 +31,10 @@ module spin_operator(
 	wire reg_en;
 	
 
-	assign spin_neg = ~spin; 			// if spin == 0, spin_neg == 1 and it becomes input of first full_adder so that J becomes -J
-							 			// if spin == 1, spin_neg == 0 and J remains with no sign conversion
+	assign spin_neg = ~spin; 				// if spin == 0, spin_neg == 1 and it becomes input of first full_adder so that J becomes -J
+							 				// if spin == 1, spin_neg == 0 and J remains with no sign conversion
 	assign c[0] = spin_neg;
-	//assign J_total = {{4{J[7]}}, J}; 	// sign extension
+	//assign J_total = {{4{J[7]}}, J}; 		// sign extension
 	assign J_xor = J ^ {8{spin_neg}};		// XOR based multipier
 
 	genvar i;
