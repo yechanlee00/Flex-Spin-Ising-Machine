@@ -6,7 +6,7 @@
 
 // Made by yechan LEE (논문 학습 및 이해를 위해 작성한 코드입니다.)
 // Last update : 2026-05-23
-// spin_PE_top.v 파일은 생성형 AI을 사용하지 않고 제작 되었습니다. (No AI was used for this code)
+// No AI tool was used
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 `timescale 1ns / 1ps
