@@ -19,27 +19,34 @@
 | `Flexspin_visualization.py` | Python file for visualizing Ising Energy map |
 | `Ising_Hamiltonian.py` | Python file for visualizing Ising Hamiltonian convergence |
 
+Verilog 코드 Run을 통해 생성된 txt 파일을 python 파일과 동일 경로에 두면 됩니다.
+
 ### 2. Design Goal
 
 `spin_operator.v`  파일은 Flex Spin Ising machine에서 local field accumulation을 수행합니다. 입력으로 들어오는 Spin value와 SRAM에 저장되어 있던 8-bit coeffcient를 곱해 local field를 MAC 연산 하는 것이 목적입니다. 해당 유닛의 구조는 아래와 같습니다.
-
-!image.png
+<p align="center">
+<img width="300" alt="Image" src="https://github.com/user-attachments/assets/3603c557-3080-4bc3-b1cc-5ac9db015355" />
+</p> 
 
 `four_spin_registers.v` 파일은 동서남북 4개의 Spin들의 값을 입력 받아 MAC unit으로 전달해주는 역할을 합니다. 이때 Flex Spin에서 구현된 reconfigurable성을 위해 Bypass 등을 수행할 수 있는 MUX가 존재합니다. 해당 유닛의 구조는 아래와 같습니다.
-
-!image.png
+<p align="center">
+<img width="400" alt="Image" src="https://github.com/user-attachments/assets/62c3ce04-82fc-4e6f-9f4e-eb6659ce5822" />
+</p> 
 
 `flex_spin_top.v` 파일은 `spin_operator.v` 와 `four_spin_registers.v` 을 이용한 DUT TOP 모듈입니다. 해당 TOP 유닛의 구조는 아래와 같습니다.
 
-!image.png
+<p align="center">
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/38c48e4f-a041-4210-bbc6-e91fe42f5477" />
+</p> 
 
 ### 3. File #1 : spin_operator.v
 
 #### 3.1 Core Algorithm
 
 `spin_operator.v`  파일은 KPI인 Ising Hamiltonian의 Effective Local Filed를 각 Spin에 대해 계산하는 역할을 수행한다. 수행되어야 하는 알고리즘은 아래와 같다.
-
+<p align="center">
 S←S+J⋅σ
+</p>
 
 - S : 12-bit accumulated Local field
 - J : 8-bit signed coefficient
@@ -47,17 +54,22 @@ S←S+J⋅σ
 
 Ising Hamilonian에서는 effective local field의 부호에 따라 update의 대상이 되는 Spin의 값이 결정된다.
 
-!image.png
+<p align="center">
+<img width="300" alt="image" src="https://github.com/user-attachments/assets/ec5d5431-523b-466b-b8c4-a976a926eb03" />
+</p> 
 
 Ising Hamiltonian으로부터 특정 Spin i에 대해 update를 수행한다고 할 때, 해당되는 Hamiltonian은 아래와 같다.
 
-!image.png
+<p align="center">
+<img width="250" alt="image" src="https://github.com/user-attachments/assets/2a855850-6843-46eb-a247-31d1788243f6" />
+</p> 
 
 괄호 안의 값을 Effective Local Field라 하며 해당 부분이 양수인 경우 σi는 양수(Spin up), 음수인 경우 σi는 음수(Spin down)으로 update되어야 한다.
 
 **→ Hamiltonian을 줄이기 위해 update 대상 spin의 부호는 Effective Local Field의 부호와 같다.**
 
-여기서 Spin 값은 1비트 encoding을 통해 up일 때는 +1, down일 때는 0으로 매핑된다.
+여기서 Spin 값은 1비트 encoding을 통해 up일 때는 +1, down일 때는 0으로 매핑된다.  
+
 
 #### 3.2 MAC operation
 
@@ -96,7 +108,9 @@ Spin 값과 연결해보면,
 
 #### 3.3 Spin Operator Architecture - Main module
 
-!image.png
+<p align="center">
+<img width="300" alt="Image" src="https://github.com/user-attachments/assets/3603c557-3080-4bc3-b1cc-5ac9db015355" />
+</p> 
 
 Input 신호는 아래와 같다.
 
@@ -240,7 +254,9 @@ module d_ff(
 
 `four_spin_registers.v`  파일은 Spin과 Interaction 하는 또 다른 Spin들을 입력 받고 계산되어 Update 되는 Spin 값을 출력하는 과정을 수행한다. 총 4개의 MUX와 2개의 DEMUX로 구성되어 있으며 전체 Architecture는 아래와 같다.
 
-!image.png
+<p align="center">
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/d17a6d9b-127e-4f36-8530-03625f6b8b75" />
+</p>
 
 #### 4.2 MUX and DEMUX operations
 
@@ -488,9 +504,9 @@ Github에 업로드 된 기준으로는 Random Negative Coefficient를 가져 �
 
 아래 그림은 Ising Map으로, Annealing 과정을 수행했을 때와 지수적으로 온도를 낮춰 Annealing 과정을 수행했을 때의 결과를 비교합니다.
 
-!image.png
+<img width="1587" height="473" alt="image" src="https://github.com/user-attachments/assets/26995ed9-f622-45ac-b798-79b15c600cae" />
+<img width="989" height="590" alt="image" src="https://github.com/user-attachments/assets/e8718641-c941-4d5b-abad-a8f0d1c5f950" />
 
-!image.png
 
 실제로 Ising Hamiltonian을 보게 되면, Annealing을 수행하지 않을 경우 local minima에 갇히게 되어 Annealing을 수행했을 때 보다 더 높은 Hamiltonian을 가지는 것을 알 수 있습니다.
 
