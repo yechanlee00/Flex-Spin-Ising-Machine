@@ -495,11 +495,12 @@ assign spin_update_value = ~MSB_sign;
 
 `tb_flex_spin.v` 파일은 논문에서 사용된 64Mhz CLK을 생성하고 120번의 Sweep 동안 Ising Model을 updating 하는 testbench 파일입니다. 해당 testbench 코드는 생성형 AI를 이용하였으며, 실제 시뮬레이션으로 검증하였음을 밝힙니다.
 
-Github에 업로드 된 기준으로는 Random Negative Coefficient를 가져 결과가 Checkerboard 형태의 Ising Map로 나오게 되어있습니다. 사용자는 Random Positive 또는 사전에 정의 된 J 값을 생성하는 코드를 추가하여 Map 결과를 자유롭게 변경할 수 있습니다.
+시행 시 Random Negative Coefficient를 가져 결과가 Checkerboard 형태의 Ising Map로 나오게 되어있습니다. 사용자는 Random Positive 또는 사전에 정의 된 J 값을 생성하는 코드를 추가하여 Map 결과를 자유롭게 변경할 수 있습니다.
 
 초기 annealing weight는 127로 설정되었고, exponential하게 감소되는 형태입니다.
 
-1, 10, 20, 30, 60, 90, 120 Sweep에서 Ising Map을 추후 python으로 시각화 할 수 있도록 txt 파일로 저장 할 수 있는 task문을 사용합니다.
+1, 10, 20, 30, 60, 90, 120 Sweep에서 Ising Map을 추후 python으로 시각화 할 수 있도록 txt 파일로 저장 할 수 있는 task문을 사용합니다.  
+실행 시 Annealing을 하지 않은 결과 및 Annealing 수행을 한 결과의 txt 파일이 모두 파일과 동일 경로에 저장됩니다.
 
 ### 7. Simulated Result with visualization (Python code)
 
