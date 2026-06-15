@@ -20,7 +20,7 @@
 | `Flexspin_visualization.py` | Python file for visualizing Ising Energy map |
 | `Ising_Hamiltonian.py` | Python file for visualizing Ising Hamiltonian convergence |
 
-Verilog 코드 Run을 통해 생성된 txt 파일을 python 파일과 동일 경로에 두면 됩니다.
+Verilog 코드 Run을 통해 생성된 txt 파일을 python 파일과 동일 경로에 두면 됩니다. python 환경은 Google Colab 환경을 대상으로 작성되었습니다.
 
 ### 2. Design Goal
 
