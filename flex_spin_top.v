@@ -6,7 +6,7 @@
 
 // Made by yechan LEE (논문 학습 및 이해를 위해 작성한 코드입니다.)
 // Last update : 2026-05-22
-// spin_PE_top.v 파일은 생성형 AI을 사용하지 않았습니다. (No AI was used for this code)
+// flex_spin_top.v 파일은 생성형 AI을 사용하지 않았습니다. (No AI was used for this code)
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
