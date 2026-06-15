@@ -15,7 +15,8 @@
 | `flex_spin_top.v` | Top unit DUT for flex spin operation |
 | `spin_operator.v` | MAC unit for spin and coefficient values |
 | `four_spin_registers.v` | Spin register unit that contains MUX and DEMUX for spin I/O |
-| `tb_flex_spin.v` | Testbench file |
+| `tb_ising_32x8x4.v` | Testbench file |
+| `build.sh` | Shell build file to run code at linux OS |
 | `Flexspin_visualization.py` | Python file for visualizing Ising Energy map |
 | `Ising_Hamiltonian.py` | Python file for visualizing Ising Hamiltonian convergence |
 
